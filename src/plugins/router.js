@@ -1,16 +1,18 @@
 import Vue from "vue";
 import Router from "vue-router";
-import HelloWorld from "../components/HelloWorld";
 import Login from "../components/account/Login";
 import Register from "../components/account/Register";
+
+//电脑版
+import MainFrame from "../components/computer/mainframe/MainFrame";
 
 Vue.use(Router);
 
 export default new Router({
     routes:[
         {
-            path: "/333",
-            component: HelloWorld
+            path: "/",
+            component: MainFrame
         },
         {
             path: "/login",
