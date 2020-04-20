@@ -7,10 +7,12 @@
                     <Input v-model="phone" placeholder="请输入手机号"/>
                 </FormItem>
                 <FormItem>
-                    <Input v-model="password" placeholder="密码"/>
+                    <Input v-model="password" type="password" placeholder="请输入密码"/>
+                </FormItem>
+                <FormItem>
+                    <Input v-model="repassword" type="password" placeholder="请再次输入密码"/>
                 </FormItem>
                 <div class="register-btn-box">
-
                     <Button type="primary" @click="register">注册</Button>
                 </div>
             </Form>
@@ -32,10 +34,30 @@
 
             }
         },
-        data() {
-            return {
-                phone: "",
-                password: ""
+        computed: {
+           phone: {
+               get(){
+                   return this.$store.state.cRegister.phone;
+               },
+               set(value){
+                   this.$store.commit("editPhone", value);
+               }
+           },
+            password: {
+                get(){
+                    return this.$store.state.cRegister.password;
+                },
+                set(value){
+                    this.$store.commit("editPwd", value);
+                }
+            },
+            repassword: {
+                get(){
+                    return this.$store.state.cRegister.repassword;
+                },
+                set(value){
+                    this.$store.commit("editRePwd", value);
+                }
             }
         }
     }

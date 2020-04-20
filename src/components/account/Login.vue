@@ -7,7 +7,7 @@
                     <Input v-model="phone" placeholder="请输入手机号"/>
                 </FormItem>
                 <FormItem>
-                    <Input v-model="password" placeholder="密码"/>
+                    <Input v-model="password" type="password" placeholder="密码"/>
                 </FormItem>
                 <div class="login-btn-box">
                     <div class="register" @click="goRegister">马上注册</div>
@@ -21,7 +21,6 @@
 <script>
 
     import {Input, Button, FormItem, Form, Message} from 'element-ui';
-
 
     export default {
         name: "Login",
@@ -40,16 +39,30 @@
                 }
 
             },
-            goRegister(){
+            goRegister() {
                 this.$router.push("/register");
             }
         },
         data() {
-            return {
-                phone: "",
-                password: "",
-                rePassword: ""
-            };
+            return {};
+        },
+        computed: {
+            phone: {
+                get() {
+                    return this.$store.state.cLogin.phone;
+                },
+                set(value) {
+                    this.$store.commit('editPhone', value);
+                }
+            },
+            password: {
+                get(){
+                    return this.$store.state.cLogin.password;
+                },
+                set(value){
+                    this.$store.commit("editPwd", value);
+                }
+            }
         }
     }
 </script>
