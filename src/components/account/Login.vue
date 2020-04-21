@@ -27,16 +27,20 @@
         components: {
             Input, Button, FormItem, Form
         },
+        created() {
+            this.$store.commit('clear');
+        },
         methods: {
             login() {
-                if (this.$data.phone === "") {
+                if (this.phone === "") {
                     Message.error("请输入手机号");
                     return;
                 }
-                if (this.$data.password === "") {
+                if (this.password === "") {
                     Message.error("请输入密码");
                     return;
                 }
+
 
             },
             goRegister() {

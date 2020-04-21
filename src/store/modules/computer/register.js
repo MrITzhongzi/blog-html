@@ -2,11 +2,12 @@ const computerRegisterModule = {
     state: {
         phone: "",
         password: "",
-        repassword: ""
+        repassword: "",
+        nickname: "",
+        username: ""
     },
     mutations: {
         editPhone(state, value){
-            console.log(state, value);
             state.phone = value;
         },
         editPwd(state, value){
@@ -14,9 +15,17 @@ const computerRegisterModule = {
         },
         editRePwd(state, value){
             state.repassword = value;
-        }
+        },
+        editNickname(state, value){
+            state.nickname = value;
+        },
+        editUsername(state, value){
+            state.username = value;
+        },
     },
-    actions: { },
+    actions: {
+
+    },
     getters: { }
 }
 
