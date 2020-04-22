@@ -7,8 +7,9 @@ const registerApi = (username, nickname, phone, password) => {
     return Vue.http.post(baseUrl + api, {username, nickname, phone, password });
 }
 
-const loginApi = ()=>{
-
+const loginApi = (phone, password)=>{
+    let api = "/api/user/login";
+    return Vue.http.post(baseUrl + api, {phone, password });
 }
 
 

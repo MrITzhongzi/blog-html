@@ -21,6 +21,8 @@
 <script>
 
     import {Input, Button, FormItem, Form, Message} from 'element-ui';
+    import {loginApi} from "../../api/account";
+    import LocalStorageUtil from "../../plugins/LocalStorageUtil";
 
     export default {
         name: "Login",
@@ -32,6 +34,7 @@
         },
         methods: {
             login() {
+
                 if (this.phone === "") {
                     Message.error("请输入手机号");
                     return;
@@ -41,6 +44,25 @@
                     return;
                 }
 
+                const promise = loginApi(this.phone, this.password)
+                promise.then((res) => {
+                    let data = res.body;
+                    if (data.code === 0) {
+                        console.log(res);
+                        Message.success("登录成功");
+                        const storage = new LocalStorageUtil();
+                        storage.set("blog_token", data.data.token);
+                        storage.set("blog_nickname", data.data.nickname);
+                        storage.set("blog_phone", data.data.phone);
+                        storage.set("blog_username", data.data.username);
+                        this.$router.push("/");
+                    } else {
+                        Message.error(data.description);
+                    }
+                }, (err) => {
+                    console.log("login err", err);
+                    Message.error("登录失败，请稍后重试。");
+                })
 
             },
             goRegister() {
