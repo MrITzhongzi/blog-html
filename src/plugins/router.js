@@ -7,6 +7,9 @@ import Register from "../components/account/Register";
 
 //电脑版
 import MainFrame from "../components/computer/mainframe/MainFrame";
+import ArticleDetail from "../components/computer/article/ArticleDetail";
+
+
 // 插件
 Vue.use(Router);
 Vue.use(VueResource);
@@ -24,6 +27,10 @@ export default new Router({
         {
             path: "/register",
             component: Register
+        },
+        {
+            path: "/article_detail/:id",
+            component: ArticleDetail
         }
     ]
 });

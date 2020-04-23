@@ -46,6 +46,8 @@
 <style scoped>
     .userinfo {
         width: 300px;
+        max-width: 300px;
+        min-width: 300px;
         height: 300px;
         display: flex;
         flex-direction: column;
