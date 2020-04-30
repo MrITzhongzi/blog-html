@@ -3,8 +3,8 @@
         <Container>
             <Aside >Aside</Aside>
             <Container class="right-con">
-                <Header>{{title}}</Header>
-                <Main>{{content}}</Main>
+                <Header v-html="title"></Header>
+                <Main v-html="content"></Main>
                 <Footer>Footer</Footer>
             </Container>
         </Container>
@@ -17,7 +17,8 @@
     export default {
         name: "ArticleDetail",
         created() {
-            this.queryArticleDetail(2);
+            const articleId = this.$route.params.id;
+            this.queryArticleDetail(articleId);
         },
         components: {
             Container, Aside, Header, Main, Footer

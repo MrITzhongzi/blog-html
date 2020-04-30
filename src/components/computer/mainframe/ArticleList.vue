@@ -1,11 +1,13 @@
 <template>
     <div class="article-list">
         <ArticleItem v-for="(item, index) in allArticleList" :key="index" :articleInfo="item"/>
+        <ArticlePage :total="totalSize" :changePage="articlePageChange"/>
     </div>
 </template>
 
 <script>
     import ArticleItem from "../article/ArticleItem";
+    import ArticlePage from "../article/ArticlePage";
     import { mapActions, mapState} from 'vuex';
 
     export default {
@@ -14,19 +16,24 @@
             this.queryAllArticle({page: 1, size: 10});
         },
         components: {
-            ArticleItem
+            ArticleItem,
+            ArticlePage
         },
         computed: {
             ...mapState({
                 page: state => state.cArticleList.page,
                 size: state => state.cArticleList.size,
+                totalSize: state => state.cArticleList.totalSize,
                 allArticleList: state => state.cArticleList.allArticleList
             })
         },
         methods: {
             ...mapActions([
                 "queryAllArticle"
-            ])
+            ]),
+            articlePageChange(page){
+                this.queryAllArticle({page, size: 10})
+            }
         }
     }
 </script>
@@ -36,6 +43,8 @@
         flex-grow: 1;
         border: 1px solid #429CFC;
         min-height: 600px;
-        max-height: 1200px;
+        max-height: 1400px;
+        position: relative;
+        padding-bottom: 50px;
     }
 </style>

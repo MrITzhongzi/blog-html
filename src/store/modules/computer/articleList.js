@@ -14,7 +14,7 @@ const articleListModule = {
             let data = value.data;
             let articltList = data.data;
 
-            state.allArticleList = [...state.allArticleList, ...articltList];
+            state.allArticleList = articltList;
             state.page = data.current_page;
             state.totalPage = data.total_page;
             state.totalSize = data.total_size;

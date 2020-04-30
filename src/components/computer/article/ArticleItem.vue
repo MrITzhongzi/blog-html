@@ -49,6 +49,7 @@
         flex-direction: column;
         justify-content: space-between;
         border-bottom: 1px solid #ccc;
+        cursor: pointer;
     }
 
     .title {
