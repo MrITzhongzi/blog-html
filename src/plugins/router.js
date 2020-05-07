@@ -8,6 +8,7 @@ import Register from "../components/account/Register";
 //电脑版
 import MainFrame from "../components/computer/mainframe/MainFrame";
 import ArticleDetail from "../components/computer/article/ArticleDetail";
+import ArticleEditor from "../components/computer/article/ArticleEditor";
 
 
 // 插件
@@ -31,6 +32,10 @@ export default new Router({
         {
             path: "/article_detail/:id",
             component: ArticleDetail
+        },
+        {
+            path: "/article_editor",
+            component: ArticleEditor
         }
     ]
 });

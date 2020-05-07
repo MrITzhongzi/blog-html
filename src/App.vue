@@ -21,4 +21,14 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
+    /* 对p初始化 */
+    p {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 富文本编辑器 css*/
+    .w-e-text-container {
+        height: 70%!important;
+    }
 </style>

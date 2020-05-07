@@ -4,7 +4,7 @@ import computerLoginModule from "./modules/computer/login"
 import computerRegisterModule from "./modules/computer/register"
 import articleListModule from "./modules/computer/articleList"
 import computerArticleDetailModule from "./modules/computer/articleDetail";
-
+import computerArticleEditorModule from "./modules/computer/articleEditor";
 
 Vue.use(Vuex);
 
@@ -19,7 +19,8 @@ const store = new Vuex.Store({
         cLogin: computerLoginModule,
         cRegister: computerRegisterModule,
         cArticleList: articleListModule,
-        cArticleDetail: computerArticleDetailModule
+        cArticleDetail: computerArticleDetailModule,
+        cArticleEditor: computerArticleEditorModule
     }
 });
 

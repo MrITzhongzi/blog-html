@@ -8,7 +8,7 @@
             <div>版本</div>
         </div>
         <div class="header-right">
-            <div class="write-blog">创作中心</div>
+            <div class="write-blog" @click="gotoEditor">创作中心</div>
             <div class="user-header">
                 <MyImage :src="Logo"
                          fit="cover"
@@ -27,6 +27,11 @@
         data(){
             return {
                 Logo
+            }
+        },
+        methods: {
+            gotoEditor(){
+                this.$router.push("/article_editor");
             }
         }
     }
@@ -73,7 +78,7 @@
     }
 
     .write-blog {
-
+        cursor: pointer;
     }
     .user-header {
         width: 40px;

@@ -2,7 +2,7 @@
     <div class="main-frame">
         <Header/>
         <div class="main-frame-con" :style="bgStyke">
-            <Banner/>
+            <Banner/>·
             <div class="user-article-box">
                 <User/>
                 <ArticleList/>

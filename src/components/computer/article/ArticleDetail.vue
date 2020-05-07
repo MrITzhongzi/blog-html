@@ -1,10 +1,12 @@
 <template>
     <div class="article-detail">
         <Container>
-            <Aside >Aside</Aside>
+            <Aside>Aside</Aside>
             <Container class="right-con">
                 <Header v-html="title"></Header>
-                <Main v-html="content"></Main>
+                <Main>
+                    <div class="article-content" v-html="content"></div>
+                </Main>
                 <Footer>Footer</Footer>
             </Container>
         </Container>
@@ -14,6 +16,7 @@
 <script>
     import {Container, Aside, Header, Main, Footer} from 'element-ui';
     import {mapState, mapActions} from 'vuex';
+
     export default {
         name: "ArticleDetail",
         created() {
@@ -26,7 +29,7 @@
         computed: {
             ...mapState({
                 title: state => state.cArticleDetail.title,
-                content:state => state.cArticleDetail.content
+                content: state => state.cArticleDetail.content
             })
         },
         methods: {
@@ -59,9 +62,17 @@
         text-align: center;
         line-height: 160px;
     }
+
     .article-detail > .el-container {
         min-height: 600px;
     }
+
+    .article-content {
+        line-height: normal;
+        text-align: left;
+    }
+
+
 
     .right-con {
         flex-direction: column;
