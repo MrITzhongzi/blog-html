@@ -9,7 +9,7 @@
         </div>
         <div class="header-right">
             <div class="write-blog" @click="gotoEditor">创作中心</div>
-            <div class="user-header">
+            <div class="user-header" @click="gotoPersonCenter">
                 <MyImage :src="Logo"
                          fit="cover"
                           style="width: 30px;border-radius: 15px;"/>
@@ -32,6 +32,9 @@
         methods: {
             gotoEditor(){
                 this.$router.push("/article_editor");
+            },
+            gotoPersonCenter(){
+                this.$router.push("/person_center");
             }
         }
     }
@@ -51,6 +54,7 @@
         align-items: center;
         font-size: 14px;
         text-align: center;
+
     }
 
     .header-left {

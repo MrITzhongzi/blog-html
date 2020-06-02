@@ -22,6 +22,7 @@
     height: 200px;
     box-sizing: border-box;
     position: relative;
+    background: #6DD6F6;
 }
     .banner-sign {
         position: absolute;

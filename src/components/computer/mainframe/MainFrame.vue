@@ -1,8 +1,8 @@
 <template>
     <div class="main-frame">
         <Header/>
-        <div class="main-frame-con" :style="bgStyke">
-            <Banner/>·
+        <div class="main-frame-con" >
+            <Banner/>
             <div class="user-article-box">
                 <User/>
                 <ArticleList/>
@@ -29,12 +29,7 @@
         data(){
             return{
                 MainFrameBg,
-                bgStyke: {
-                    backgroundImage: 'url(' + MainFrameBg + ')',
-                    backgroundSize: '100% 100%',
-                    backgroundPosition: 'top left',
-                    backgroundRepeat: "no-repeat"
-                }
+
             }
         }
     }
@@ -50,9 +45,11 @@
         max-width: 1200px;
         min-width: 800px;
         margin: 0 auto;
+        background: #004961;
     }
 
     .user-article-box {
         display: flex;
+        padding-top: 10px;
     }
 </style>

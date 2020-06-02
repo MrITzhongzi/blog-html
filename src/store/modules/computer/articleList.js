@@ -27,8 +27,17 @@ const articleListModule = {
             const size = pageinfo.size;
             const promise = queryAllArticleList(page, size)
             promise.then((res) => {
-                const data = res.body;
+                let data = res.body;
+                console.log(data, "1");
                 if (data.code === 0) {
+                    let resList = data.data.data;
+                    //处理掉html标签
+                    for (let i = 0; i < resList.length; i++) {
+                        resList[i].articleContent =resList[i].articleContent
+                            .replace(/(<[^>]+>)/g, "")
+                            .replace(/&nbsp;/g, "")
+                            .replace(/\s/g, "");
+                    }
                     context.commit("addArticleList", data);
                 } else {
                     Message.error("查询文章列表出错，请稍后重试……");

@@ -52,7 +52,10 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        background: rgba(0,0,0,0.3);
+        /*background: rgba(0,0,0,0.3);*/
+        background: #FFDA56;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .userinfo-top {

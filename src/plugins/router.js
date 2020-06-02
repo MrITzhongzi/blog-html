@@ -9,6 +9,7 @@ import Register from "../components/account/Register";
 import MainFrame from "../components/computer/mainframe/MainFrame";
 import ArticleDetail from "../components/computer/article/ArticleDetail";
 import ArticleEditor from "../components/computer/article/ArticleEditor";
+import PersonCenterFrame from "../components/computer/personcenter/PersonCenterFrame";
 
 
 // 插件
@@ -36,6 +37,10 @@ export default new Router({
         {
             path: "/article_editor",
             component: ArticleEditor
+        },
+        {
+            path: "/person_center",
+            component: PersonCenterFrame
         }
     ]
 });

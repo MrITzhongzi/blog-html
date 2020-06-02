@@ -41,10 +41,10 @@
 <style scoped>
     .article-list {
         flex-grow: 1;
-        border: 1px solid #429CFC;
         min-height: 600px;
         max-height: 1400px;
         position: relative;
         padding-bottom: 50px;
+        margin-right: 10px;
     }
 </style>
