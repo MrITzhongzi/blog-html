@@ -1,4 +1,4 @@
-import {insertArticle} from "../../../api/article"
+import {insertArticle} from "../../../../api/article"
 import {Message} from "element-ui";
 
 const computerArticleEditorModule = {

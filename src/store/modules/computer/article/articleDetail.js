@@ -1,4 +1,4 @@
-import {queryArticleById} from "../../../api/article";
+import {queryArticleById} from "../../../../api/article";
 
 const computerArticleDetailModule = {
     state: {

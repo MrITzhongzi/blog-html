@@ -1,4 +1,4 @@
-import {queryAllArticleList} from "../../../api/article";
+import {queryAllArticleList} from "../../../../api/article";
 import {Message} from "element-ui";
 
 const articleListModule = {

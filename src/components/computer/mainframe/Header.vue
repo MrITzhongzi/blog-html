@@ -34,7 +34,7 @@
                 this.$router.push("/article_editor");
             },
             gotoPersonCenter(){
-                this.$router.push("/person_center");
+                this.$router.push("/person_center/basic");
             }
         }
     }
