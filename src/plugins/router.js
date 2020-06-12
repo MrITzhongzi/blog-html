@@ -14,12 +14,14 @@ import BasicInfo from "../components/computer/personcenter/PersonCenterContent/B
 import MyAttentionPeople from "../components/computer/personcenter/PersonCenterContent/MyAttentionPeople";
 import MyFans from "../components/computer/personcenter/PersonCenterContent/MyFans";
 import Updateinfo from "../components/computer/personcenter/PersonCenterContent/Updateinfo";
+import DefaultPage from "../components/computer/personcenter/PersonCenterContent/DefaultPage";
+import CommenUtil from "./CommenUtil";
 
 // 插件
 Vue.use(Router);
 Vue.use(VueResource);
 
-export default new Router({
+ const MyRouter = new Router({
     routes:[
         {
             path: "/",
@@ -46,6 +48,10 @@ export default new Router({
             component: PersonCenterFrame,
             children: [
                 {
+                    path: "default",
+                    component: DefaultPage
+                },
+                {
                     path: "basic",
                     component: BasicInfo
                 },
@@ -65,3 +71,20 @@ export default new Router({
         }
     ]
 });
+
+// 判断是否需要登录权限 以及是否登录
+MyRouter.beforeEach((to, from, next) => {
+    if (to.matched.some(res => res.regex.test("/person_center"))) {// 判断是否需要登录权限
+        if (CommenUtil.checkToken()) {// 判断是否登录
+            next()
+        } else {// 没登录则跳转到登录界面
+            next({
+                path: '/login'
+            })
+        }
+    } else {
+        next()
+    }
+})
+
+export default MyRouter;

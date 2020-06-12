@@ -21,6 +21,7 @@
 <script>
     import {Image} from 'element-ui';
     import Logo from "../../../assets/default_head.jpeg";
+    import CommenUtil from "../../../plugins/CommenUtil";
     export default {
         name: "Header",
         components: {MyImage: Image},
@@ -34,7 +35,9 @@
                 this.$router.push("/article_editor");
             },
             gotoPersonCenter(){
-                this.$router.push("/person_center/basic");
+                let loginUrl = "/person_center/basic";
+                let notLoginUrl = "/person_center/default";
+                CommenUtil.conditionJump(this, loginUrl , notLoginUrl);
             }
         }
     }

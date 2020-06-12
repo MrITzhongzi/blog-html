@@ -1,9 +1,17 @@
 <template>
     <div class="header-box">
-        <div class="header-con">
+        <template v-if="username">
+        <div class="header-con" >
             <MyImage fit="cover" :style="imageSty" :src="url"/>
             <div class="desc">{{username}}</div>
         </div>
+        </template>
+        <template v-else>
+            <div class="header-con" >
+                <MyImage fit="cover" :style="imageSty" :src="url"/>
+                <div class="desc">请登录……</div>
+            </div>
+        </template>
     </div>
 </template>
 
@@ -24,7 +32,6 @@
             if (username) {
                 this.$store.commit("editPCUsername", username);
             }
-
         },
         data: function () {
             return {

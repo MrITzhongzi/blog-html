@@ -24,13 +24,15 @@ const basicInfo = {
     },
     actions: {
         getUserInfo_basic(context){
-            console.log(context)
+
             const promise = getUserInfoApi();
             promise.then((res)=>{
-                console.log(res);
+
                 const data = res.body;
                 if(data.code === 0) {
                     context.commit("showUserInfo", data.data)
+                } else {
+                    Message.error(data.description);
                 }
             }, ()=> {
                 Message.error("查询用户信息出错，请稍后重试……");
