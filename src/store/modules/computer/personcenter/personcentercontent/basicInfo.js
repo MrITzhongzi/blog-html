@@ -15,9 +15,7 @@ const basicInfo = {
     },
     mutations: {
         showUserInfo(state, value){
-            console.log(state, value)
             for(let key in value) {
-                console.log(key);
                 state[key] = value[key];
             }
         }

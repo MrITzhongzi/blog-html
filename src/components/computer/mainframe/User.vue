@@ -1,9 +1,14 @@
 <template>
     <div class="userinfo">
         <div class="userinfo-top">
-            <MyImage :src="Header"
-                     class="userinfo-img"/>
-            <div class="userinfo-name">itzhongzi</div>
+            <div class="head-img-box">
+                <MyImage :src="Header"
+                         class="userinfo-img"/>
+                <div class="userinfo-name">{{username}}</div>
+            </div>
+            <div class="attation">
+                <UserAttention :flag="isAttention"/>
+            </div>
         </div>
         <div class="userinfo-bottom">
             <div class="row">
@@ -29,16 +34,36 @@
 <script>
     import {Image} from 'element-ui';
     import Header from "../../../assets/default_head.jpeg";
+    import UserAttention from "./user/UserAttention";
+    import {mapState, mapActions} from "vuex";
 
     export default {
         name: "User",
         components: {
-            MyImage: Image
+            MyImage: Image,
+            UserAttention
+        },
+        created() {
+            this.queryUserInfo();
         },
         data() {
             return {
                 Header,
             }
+        },
+        computed: {
+            ...mapState({
+                headImg: state => state.cUserModule.headImg,
+                username: state => state.cUserModule.username,
+                blogNum: state => state.cUserModule.blogNum,
+                visitNum: state => state.cUserModule.visitNum,
+                likeNum: state => state.cUserModule.likeNum,
+                fansNum: state => state.cUserModule.fansNum,
+                isAttention: state => state.cUserModule.isAttention
+            })
+        },
+        methods: {
+            ...mapActions(["queryUserInfo"])
         }
     }
 </script>
@@ -64,10 +89,19 @@
         justify-content: center;
     }
 
+    .head-img-box {
+        text-align: center;
+        margin-right: 20px;
+    }
+
     .userinfo-img {
         width: 100px;
         height: 100px;
         border-radius: 50px;
+    }
+
+    .userinfo-name {
+        margin-top: 5px;
     }
 
     .userinfo-bottom {

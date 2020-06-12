@@ -6,6 +6,7 @@ import articleListModule from "./modules/computer/mainframe/articleList"
 import computerArticleDetailModule from "./modules/computer/article/articleDetail";
 import computerArticleEditorModule from "./modules/computer/article/articleEditor";
 import computerAersonCenterFrame from "./modules/computer/personcenter/personCenterFrame";
+import computerUserModule from "./modules/computer/mainframe/user";
 
 Vue.use(Vuex);
 
@@ -22,6 +23,7 @@ const store = new Vuex.Store({
         cArticleList: articleListModule,
         cArticleDetail: computerArticleDetailModule,
         cArticleEditor: computerArticleEditorModule,
+        cUserModule: computerUserModule,
         // 个人中心
         cPersonCenter: computerAersonCenterFrame
     }

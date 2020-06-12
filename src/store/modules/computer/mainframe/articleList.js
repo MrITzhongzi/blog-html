@@ -22,13 +22,11 @@ const articleListModule = {
     },
     actions: {
         queryAllArticle(context, pageinfo) {
-            console.log(context);
             const page = pageinfo.page;
             const size = pageinfo.size;
             const promise = queryAllArticleList(page, size)
             promise.then((res) => {
                 let data = res.body;
-                console.log(data, "1");
                 if (data.code === 0) {
                     let resList = data.data.data;
                     //处理掉html标签
