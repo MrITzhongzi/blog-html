@@ -4,15 +4,18 @@ const computerArticleDetailModule = {
     state: {
         title: "",
         content: "",
-
+        userId:"",
+        articleId: "",
     },
     mutations: {
-        editTitle(state, value){
-            state.title = value;
+        editArticleDetailInfo(state, value){
+            console.log(value)
+            state.title = value.articleTitle;
+            state.content = value.articleContent;
+            state.articleId = value.articleId;
+            state.userId = value.userId;
         },
-        editContent(state, value){
-            state.content = value;
-        }
+
     },
     actions: {
         queryArticleDetail(context, value){
@@ -21,8 +24,7 @@ const computerArticleDetailModule = {
                console.log(res);
                const data = res.body;
                if(data.code === 0) {
-                   context.commit("editTitle", data.data.articleTitle);
-                   context.commit("editContent", data.data.articleContent);
+                   context.commit("editArticleDetailInfo", data.data);
                }
             }, (err) => {
                 console.log(err);

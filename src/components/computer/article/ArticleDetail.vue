@@ -1,7 +1,9 @@
 <template>
     <div class="article-detail">
         <Container>
-            <Aside>Aside</Aside>
+            <Aside>
+                <User :showAttention="true" :isAttention="false"/>
+            </Aside>
             <Container class="right-con">
                 <Header v-html="title"></Header>
                 <Main>
@@ -16,6 +18,7 @@
 <script>
     import {Container, Aside, Header, Main, Footer} from 'element-ui';
     import {mapState, mapActions} from 'vuex';
+    import User from "../mainframe/User";
 
     export default {
         name: "ArticleDetail",
@@ -24,7 +27,7 @@
             this.queryArticleDetail(articleId);
         },
         components: {
-            Container, Aside, Header, Main, Footer
+            Container, Aside, Header, Main, Footer, User
         },
         computed: {
             ...mapState({
@@ -52,8 +55,8 @@
         background-color: #D3DCE6;
         color: #333;
         text-align: center;
-        line-height: 200px;
-        width: 300px;
+        width: 320px!important;
+        padding-top: 10px;
     }
 
     .el-main {
@@ -61,6 +64,10 @@
         color: #333;
         text-align: center;
         line-height: 160px;
+    }
+
+    .article-detail {
+        background: #C9DBEE;
     }
 
     .article-detail > .el-container {
@@ -73,8 +80,8 @@
     }
 
 
-
     .right-con {
         flex-direction: column;
     }
+
 </style>

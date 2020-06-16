@@ -1,51 +1,71 @@
 <template>
-    <div class="userinfo">
-        <div class="userinfo-top">
-            <div class="head-img-box">
-                <MyImage :src="Header"
-                         class="userinfo-img"/>
-                <div class="userinfo-name">{{username}}</div>
+    <div class="userinfo-box">
+
+        <template v-if="isLogin">
+        <div class="userinfo">
+            <div class="userinfo-top">
+                <div class="head-img-box">
+                    <MyImage :src="Header"
+                             class="userinfo-img"/>
+                    <div class="userinfo-name">{{username}}</div>
+                </div>
+                <div class="attation" v-if="showAttention">
+                     <UserAttention :flag="isAttention"/>
+                </div>
             </div>
-            <div class="attation">
-                <UserAttention :flag="isAttention"/>
+            <div class="userinfo-bottom">
+                <div class="row">
+                    <div class="key">原创:</div>
+                    <div class="value">100</div>
+                </div>
+                <div class="row">
+                    <div class="key">浏览量:</div>
+                    <div class="value">100</div>
+                </div>
+                <div class="row">
+                    <div class="key">点赞数:</div>
+                    <div class="value">100</div>
+                </div>
+                <div class="row">
+                    <div class="key">粉丝:</div>
+                    <div class="value">100</div>
+                </div>
             </div>
         </div>
-        <div class="userinfo-bottom">
-            <div class="row">
-                <div class="key">原创:</div>
-                <div class="value">100</div>
+        </template>
+        <template v-else>
+            <div class="not-login">
+                <Button type="primary" @click="login">请登录……</Button>
             </div>
-            <div class="row">
-                <div class="key">浏览量:</div>
-                <div class="value">100</div>
-            </div>
-            <div class="row">
-                <div class="key">点赞数:</div>
-                <div class="value">100</div>
-            </div>
-            <div class="row">
-                <div class="key">粉丝:</div>
-                <div class="value">100</div>
-            </div>
-        </div>
+        </template>
+
     </div>
 </template>
 
 <script>
-    import {Image} from 'element-ui';
+    import {Image, Button} from 'element-ui';
     import Header from "../../../assets/default_head.jpeg";
-    import UserAttention from "./user/UserAttention";
     import {mapState, mapActions} from "vuex";
+    import LocalStorageUtil from "../../../plugins/LocalStorageUtil";
+    import UserAttention from "./user/UserAttention";
 
     export default {
         name: "User",
         components: {
-            MyImage: Image,
-            UserAttention
+            MyImage: Image,Button, UserAttention
+
         },
         created() {
-            this.queryUserInfo();
+            const storage = new LocalStorageUtil();
+            const token = storage.get("blog_token");
+            if(token) {
+                this.queryUserInfo();
+            } else {
+                this.$store.commit("editIsLogin", false)
+            }
+
         },
+        props: ["isAttention","showAttention"],
         data() {
             return {
                 Header,
@@ -59,11 +79,14 @@
                 visitNum: state => state.cUserModule.visitNum,
                 likeNum: state => state.cUserModule.likeNum,
                 fansNum: state => state.cUserModule.fansNum,
-                isAttention: state => state.cUserModule.isAttention
+                isLogin: state => state.cUserModule.isLogin,
             })
         },
         methods: {
-            ...mapActions(["queryUserInfo"])
+            ...mapActions(["queryUserInfo"]),
+            login(){
+                this.$router.push("/login")
+            }
         }
     }
 </script>
@@ -77,10 +100,10 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        /*background: rgba(0,0,0,0.3);*/
         background: #FFDA56;
         margin-left: 10px;
         margin-right: 10px;
+        line-height: 20px;
     }
 
     .userinfo-top {
@@ -127,4 +150,18 @@
         margin-left: 10px;
         text-align: left;
     }
+
+    .not-login {
+        width: 300px;
+        max-width: 300px;
+        min-width: 300px;
+        height: 300px;
+        margin-left: 10px;
+        margin-right: 10px;
+        background: #FFDA56;
+        box-sizing: border-box;
+        text-align: center;
+        line-height: 300px;
+    }
+
 </style>

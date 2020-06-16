@@ -56,6 +56,7 @@
                         storage.set("blog_phone", data.data.phone);
                         storage.set("blog_username", data.data.username);
                         this.$router.push("/");
+                        this.$store.commit("editIsLogin", true);
                     } else {
                         Message.error(data.description);
                     }

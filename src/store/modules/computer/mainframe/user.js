@@ -9,14 +9,16 @@ const userModule = {
         visitNum: "",
         likeNum: "",
         fansNum: "",
-        isAttention: false
+        isLogin: true
     },
     mutations: {
         editUserInfo(state, value){
             if(value.userNickname) {
                 state.username = value.userNickname;
             }
-
+        },
+        editIsLogin(state, value){
+            state.isLogin = value;
         }
     },
     actions: {
@@ -24,7 +26,6 @@ const userModule = {
 
             let promise = getUserInfoApi();
             promise.then((res)=>{
-                console.log(res);
                 let data = res.body;
                 if(data.code === 0) {
                     context.commit("editUserInfo", data.data)

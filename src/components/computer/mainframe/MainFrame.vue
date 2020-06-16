@@ -4,7 +4,7 @@
         <div class="main-frame-con" >
             <Banner/>
             <div class="user-article-box">
-                <User/>
+                <User :showAttention="false" :isAttention="false"/>
                 <ArticleList/>
             </div>
             <Footer />
