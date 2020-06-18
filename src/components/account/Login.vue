@@ -48,13 +48,13 @@
                 promise.then((res) => {
                     let data = res.body;
                     if (data.code === 0) {
-                        console.log(res);
                         Message.success("登录成功");
                         const storage = new LocalStorageUtil();
                         storage.set("blog_token", data.data.token);
                         storage.set("blog_nickname", data.data.nickname);
                         storage.set("blog_phone", data.data.phone);
                         storage.set("blog_username", data.data.username);
+                        storage.set("blog_user_id", data.data.userId);
                         this.$router.push("/");
                         this.$store.commit("editIsLogin", true);
                     } else {

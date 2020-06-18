@@ -1,5 +1,6 @@
 import {getUserInfoApi} from "../../../../api/user";
 import {Message} from "element-ui";
+import userAttentionModule from "./user/userAttention";
 
 const userModule = {
     state: {
@@ -22,9 +23,8 @@ const userModule = {
         }
     },
     actions: {
-        queryUserInfo(context){
-
-            let promise = getUserInfoApi();
+        queryUserInfo(context, param){
+            let promise = getUserInfoApi(param);
             promise.then((res)=>{
                 let data = res.body;
                 if(data.code === 0) {
@@ -37,21 +37,10 @@ const userModule = {
             })
         }
     },
-    getters: {}
+    getters: {},
+    modules: {
+        userAttention: userAttentionModule
+    }
 }
-
-/**
-
- "userIp": "192.168.1.3",
- "userName": "李洪伟",
- "userEmail": null,
- "userProfilePhoto": null,
- "userRegistrationTime": null,
- "userBirthday": null,
- "userAge": null,
- "userTelephoneNumber": "17862806857",
- "userNickname": "Mr_li"
-
- */
 
 export default userModule;

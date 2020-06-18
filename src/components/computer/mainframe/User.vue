@@ -59,7 +59,8 @@
             const storage = new LocalStorageUtil();
             const token = storage.get("blog_token");
             if(token) {
-                this.queryUserInfo();
+                let userId = this.$route.params.user_id;
+                this.queryUserInfo(userId);
             } else {
                 this.$store.commit("editIsLogin", false)
             }

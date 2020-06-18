@@ -34,7 +34,7 @@
                     Message.warning("请刷新后重试。");
                     return;
                 }
-                this.$router.push(`/article_detail/${this.articleInfo.articleId}`);
+                this.$router.push(`/article_detail/${this.articleInfo.userId}/${this.articleInfo.articleId}`);
             }
         }
     }

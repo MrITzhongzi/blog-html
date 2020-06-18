@@ -36,7 +36,7 @@ Vue.use(VueResource);
             component: Register
         },
         {
-            path: "/article_detail/:id",
+            path: "/article_detail/:user_id/:article_id",
             component: ArticleDetail
         },
         {
