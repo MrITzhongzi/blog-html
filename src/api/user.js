@@ -26,8 +26,15 @@ const attentionUserApi = (user_id) => {
     return Vue.http.get(baseUrl + api, { params: {user_id},headers: {token}});
 }
 
+const queryAttentionUserListApi = () => {
+    let api = "/api/user/attention_user_list";
+    const token = storage.get("blog_token");
+    return Vue.http.get(baseUrl + api, {headers: {token}});
+}
+
 export {
     getUserInfoApi,
     judgeAttentionUserApi,
-    attentionUserApi
+    attentionUserApi,
+    queryAttentionUserListApi
 }

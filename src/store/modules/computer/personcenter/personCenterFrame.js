@@ -1,5 +1,6 @@
 import PersonCenterHeader from "./personCenterHeader";
 import BasicInfo from "./personcentercontent/basicInfo";
+import MyAttentionPeopleModule from "./personcentercontent/myAttentionPeople";
 
 const personCenterFrame = {
     state: {},
@@ -8,7 +9,8 @@ const personCenterFrame = {
     getters: {},
     modules: {
         header: PersonCenterHeader,
-        content: BasicInfo
+        content: BasicInfo,
+        attention: MyAttentionPeopleModule
     }
 }
 
